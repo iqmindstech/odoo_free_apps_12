@@ -21,11 +21,11 @@ class WebsiteSaleInherit(WebsiteSale):
 			if post.get('RESPONSE_CODE') =='300' and post.get('STATUS') == 'Invalid' :
 				print("post.get('RESPONSE_CODE') ==300")
 				data = {'response_message' : post.get('STATUS')}
-				return request.render('payment_paycaps.paycaps_msg', data)
+				return request.render('payment_paycaps_12.paycaps_msg', data)
 
 			elif post.get('RESPONSE_CODE') == '010' and post.get('STATUS') == 'Cancelled':
 				data = {'response_message' : post.get('RESPONSE_MESSAGE')}
-				return request.render('payment_paycaps.paycaps_msg', data)
+				return request.render('payment_paycaps_12.paycaps_msg', data)
 			else:
 				print("Sucess Paycaps")
 				obj = http.request.env['account.journal'].sudo().search([('type', '=', 'bank')])
@@ -79,7 +79,7 @@ class WebsiteSaleInherit(WebsiteSale):
 											[('payment_id', '=', payment_id.id), ('credit', '!=', 0)])
 					        			if move_line:
 					        				add = invoice_id.register_payment(move_line)
-					        return request.render("payment_paycaps.paycaps_confirmation_link_template",{'invoice_id':invoice_id})
+					        return request.render("payment_paycaps_12.paycaps_confirmation_link_template",{'invoice_id':invoice_id})
 					    else:
 					        context = {"active_model": 'sale.order', "active_ids": [order.id], "active_id": order.id}
 					        amount = int(post['AMOUNT'])/100
@@ -121,7 +121,7 @@ class WebsiteSaleInherit(WebsiteSale):
 
 					        request.website.sale_reset()
 
-					    return request.render("payment_paycaps.paycaps_confirmation", {'order': order,'invoice':order.invoice_ids})
+					    return request.render("payment_paycaps_12.paycaps_confirmation", {'order': order,'invoice':order.invoice_ids})
 
 		else:
 			print("###########3333333222222222222")

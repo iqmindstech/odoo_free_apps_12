@@ -6,7 +6,7 @@
             <field name="provider">paycaps</field>
 <!--             <field name="image" type="base64" file="payment_paycaps/static/src/description/icon.png"/>-->
             <field name="company_id" ref="base.main_company"/>
-            <field name="view_template_id" ref="payment_paycaps.paycaps_acquirer_button"/>
+            <field name="view_template_id" ref="payment_paycaps_12.paycaps_acquirer_button"/>
             <field name="environment">test</field>
             <field name="pre_msg"><![CDATA[
 <p>You will be redirected to the Payfort website after clicking on the payment button.</p>]]></field>

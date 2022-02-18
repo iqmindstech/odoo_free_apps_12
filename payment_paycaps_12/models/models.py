@@ -103,7 +103,7 @@ class PaymentAcquirerPaycap(models.Model):
         data["CUST_PHONE"] = CUST_PHONE
         data["CURRENCY_CODE"] = CURRENCY_CODE
         data["AMOUNT"] = AMOUNT
-        data["PRODUCT_DESC"] = "Test Transaction"
+        data["PRODUCT_DESC"] = "Ecommerce Products"
         #data["CUST_SHIP_STREET_ADDRESS1"] = CUST_STREET_ADDRESS1
         #data["CUST_SHIP_CITY"] =CUST_CITY
         #data["CUST_SHIP_STATE"] = CUST_STATE
@@ -126,7 +126,7 @@ class PaymentAcquirerPaycap(models.Model):
             "CUST_STREET_ADDRESS1":CUST_STREET_ADDRESS1,
             "CUST_ZIP":CUST_ZIP,            ''          
             "HASH": data["HASH"],#signature.upper(),
-            "PRODUCT_DESC":"NT Demo Transaction",
+            "PRODUCT_DESC":"Ecommerce Products",
             "RETURN_URL":RETURN_URL,
             "TXNTYPE":TXNTYPE, 
            
