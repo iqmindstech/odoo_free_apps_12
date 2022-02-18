@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="paycaps_confirmation_link_template" name="Order Confirmation">
+            <t t-call="website.layout">
+                <div class="container-fluied" style="background:#f2fafc">
+                    <div class="row">
+                    <div class="col-md-2"/>
+                    <div class="col-md-8 text-center pt64 bg-white">
+                        <p>
+                            <span style="font-size: 38px;font-weight: bold;">Your Invoice is paid</span>
+                        </p>
+                        <img src="/payment_paycaps/static/src/img/icon.png" class="img img-responsive" style="width:100px"/>
+                        <div class="row row no-gutters pt32 pb16">
+                            <div class="col-md-6 text-left pl-3 pt-2 pb-2" style="background:#f3f3f3;border:1px solid #f8f8f8">
+                                <p class="font-weight-bold mb-0" style="color:red;font-size: 22px;">SUMMARY :</p>
+                                <p class="mb-0 font-weight pt-2" style="font-size: 16px;">Invoice : <t t-esc="invoice_id.number"/></p>
+                                <p class="mb-0 font-weight" style="font-size: 16px;">Invoice Date : <t t-esc="invoice_id.date_invoice"/></p>
+                                <p class="mb-0 font-weight" style="font-size: 16px;">Total Amount : <t t-esc="invoice_id.currency_id.name"/> <t t-esc="invoice_id.amount_total"/></p>
+                        </div>
+                            <div class="col-md-6 text-left pl-3 pt-2 pb-2" style="background:#f3f3f3;border:1px solid #f8f8f8">
+                                 <p class="font-weight-bold mb-0" style="color:red;font-size: 22px;">SHIPPING ADDRESS :</p>
+                                <p class="mb-0 font-weight pt-2" style="font-size: 16px;"><t t-esc="invoice_id.partner_id.name"/></p>
+                                <p class="mb-0 font-weight" style="font-size: 16px;"><t t-esc="invoice_id.partner_id.street"/>, <t t-esc="invoice_id.partner_id.street"/></p>
+                                <p class="mb-0 font-weight" style="font-size: 16px;"><t t-esc="invoice_id.partner_id.city"/>, <t t-esc="invoice_id.partner_id.state_id.name"/>,  <t t-esc="invoice_id.partner_id.country_id.name"/>, <t t-esc="invoice_id.partner_id.zip"/> </p>
+                        </div>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                                <tr style="background:#f3f3f3">
+                                    <th class="text-left">Product</th>
+                                    <th>QTY</th>
+                                    <th>PRICE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <t t-foreach="invoice_id.invoice_line_ids" t-as="line">
+                                <tr>
+
+                                       <td class="text-left">
+
+                                           <t t-esc="line.product_id.image_small" t-options="{'widget': 'image', 'resize':'90*90', 'itemprop': 'image'}"/>
+                                           <t t-esc="line.product_id.display_name"/>
+                                       </td>
+                                        <td><t t-esc="line.quantity"/></td>
+                                        <td><t t-esc="line.price_unit"/></td>
+
+
+
+                                </tr>
+                                </t>
+
+
+                            </tbody>
+                        </table>
+
+                        <div class="row pb32" style="font-size: 18px;background:#f3f3f3">
+                            <div class="col-md-6 col-12"/>
+                            <div class="col-md-4 text-right col-8">
+                                <p class="font-weight-bold mb-0">Subtotal :</p>
+                                <p class="font-weight-bold mb-0">Tax :</p>
+                               <!-- <p class="font-weight-bold mb-0">Discount :</p>-->
+                                <p class="font-weight-bold mb-0 text-danger">Order Total :</p>
+                            </div>
+                            <div class="col-md-2 text-left col-4">
+                                <p class="font-weight-bold mb-0"><t t-esc="invoice_id.currency_id.name"/> <t t-esc="invoice_id.amount_untaxed"/></p>
+                                <p class="font-weight-bold mb-0"><t t-esc="invoice_id.currency_id.name"/> <t t-esc="invoice_id.amount_tax"/></p>
+                                <!--<p class="font-weight-bold mb-0"><t t-esc="invoice_id.currency_id.name"/> <t t-esc="sum(l.discount for l in invoice_id.invoice_line_ids) " /></p>-->
+                                <p class="font-weight-bold mb-0 text-danger"><t t-esc="invoice_id.currency_id.name"/> <t t-esc="invoice_id.amount_total"/></p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-1"/>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
